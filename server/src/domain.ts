@@ -14,7 +14,8 @@ const iso = (days: number) => new Date(now + days * 86400000).toISOString().slic
 
 export const projects: Project[] = [
   { id: 'PRJ-001', code: 'NORTHSTAR-S1', title: 'Northstar / 北境回声', season: 1, status: 'post', currency: 'CNY', budgetVersionId: 'BUD-001-V3', deliveryDate: iso(44) },
-  { id: 'PRJ-002', code: 'ORBIT-DOC', title: 'Orbit / 轨道之外', season: 1, status: 'production', currency: 'CNY', budgetVersionId: 'BUD-002-V2', deliveryDate: iso(126) }
+  { id: 'PRJ-002', code: 'ORBIT-DOC', title: 'Orbit / 轨道之外', season: 1, status: 'production', currency: 'CNY', budgetVersionId: 'BUD-002-V2', deliveryDate: iso(126) },
+  { id: 'PRJ-003', code: 'GREENLIT-EMPTY', title: 'Hollow Star / 待填充项目', season: 1, status: 'development', currency: 'CNY', budgetVersionId: 'BUD-003-V1', deliveryDate: iso(210) }
 ];
 export const budgetLines: BudgetLine[] = [
   { id: 'BL-101', projectId: 'PRJ-001', category: '制作', subcategory: '主演与主创', planned: 12800000, committed: 11200000, actual: 10400000, forecast: 13100000, owner: '制片部', risk: 'medium' },
@@ -40,6 +41,14 @@ export const approvals: Approval[] = [
   { id: 'APR-03', projectId: 'PRJ-002', entityType: 'delivery', entityId: 'DEL-007', title: '海外节展交付包', requestedBy: '发行部', status: 'approved', approver: '法务负责人', createdAt: iso(-5), comment: '已补充航拍授权凭证' }
 ];
 export const auditEvents: AuditEvent[] = [{ id: 'AUD-01', action: 'CREATE', entity: 'budget', entityId: 'BUD-001-V3', actor: '制片主任', at: new Date(now - 86400000).toISOString(), details: '从 V2 复制并调整后期科目' }];
+
+export function getProject(projectId: string) {
+  return projects.find(project => project.id === projectId);
+}
+
+export function projectExists(projectId: string) {
+  return getProject(projectId) !== undefined;
+}
 
 export function projectSummary(projectId = projects[0].id) {
   const lines = budgetLines.filter(line => line.projectId === projectId);
