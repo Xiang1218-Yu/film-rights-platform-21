@@ -14,7 +14,8 @@ const iso = (days: number) => new Date(now + days * 86400000).toISOString().slic
 
 export const projects: Project[] = [
   { id: 'PRJ-001', code: 'NORTHSTAR-S1', title: 'Northstar / 北境回声', season: 1, status: 'post', currency: 'CNY', budgetVersionId: 'BUD-001-V3', deliveryDate: iso(44) },
-  { id: 'PRJ-002', code: 'ORBIT-DOC', title: 'Orbit / 轨道之外', season: 1, status: 'production', currency: 'CNY', budgetVersionId: 'BUD-002-V2', deliveryDate: iso(126) }
+  { id: 'PRJ-002', code: 'ORBIT-DOC', title: 'Orbit / 轨道之外', season: 1, status: 'production', currency: 'CNY', budgetVersionId: 'BUD-002-V2', deliveryDate: iso(126) },
+  { id: 'PRJ-003', code: 'EMPTY-PILOT', title: 'Empty Pilot / 空项目样例', season: 1, status: 'development', currency: 'CNY', budgetVersionId: 'BUD-003-V1', deliveryDate: iso(220) }
 ];
 export const budgetLines: BudgetLine[] = [
   { id: 'BL-101', projectId: 'PRJ-001', category: '制作', subcategory: '主演与主创', planned: 12800000, committed: 11200000, actual: 10400000, forecast: 13100000, owner: '制片部', risk: 'medium' },
